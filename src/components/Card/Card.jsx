@@ -5,24 +5,23 @@ import Link from 'next/link';
 const Card = ({ post }) => {
     return (
         <div className={styles.container}>
-            <div className={styles.imageContainer}>
-                <Image src="/p1.jpeg" fill alt="" />
-            </div>
+            {post.img && (
+                <div className={styles.imageContainer}>
+                    <Image src={post.img} fill alt="" />
+                </div>
+            )}
             <div className={styles.textContainer}>
                 <div className={styles.detail}>
-                    <span className={styles.date}>11.02.2023 - </span>
-                    <span className={styles.category}>CULTURE</span>
+                    <span className={styles.date}>
+                        {post.createdAt.substring(0, 10)} -{' '}
+                    </span>
+                    <span className={styles.category}>{post.catSlug}</span>
                 </div>
-                <Link href="/">
+                <Link href={`/posts/${post.slug}`}>
                     <h1>{post.title}</h1>
                 </Link>
-                <p className={styles.desc}>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Ea
-                    voluptatibus, eius mollitia doloribus tenetur maiores
-                    blanditiis numquam harum consectetur maxime exercitationem
-                    expedita, quia delectus a.
-                </p>
-                <Link className={styles.link} href="/">
+                <p className={styles.desc}>{post?.desc.substring(0, 60)}</p>
+                <Link className={styles.link} href={`/posts/${post.slug}`}>
                     Read More
                 </Link>
             </div>
