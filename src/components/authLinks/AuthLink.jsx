@@ -6,7 +6,7 @@ import { useState } from 'react';
 const AuthLink = () => {
     const [isSideMenuOpen, setIsSideMenuOpen] = useState(false);
     //temporary
-    const status = 'notauthenticated';
+    const status = 'authenticated';
     return (
         <>
             {status === 'notauthenticated' ? (
