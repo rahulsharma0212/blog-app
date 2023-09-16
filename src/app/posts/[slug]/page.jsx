@@ -36,8 +36,12 @@ const SinglePage = async ({ params }) => {
                             </div>
                         )}
                         <div className={styles.userTextContainer}>
-                            <span className={styles.username}>vikal kumar</span>
-                            <span className={styles.date}>01.01.2023</span>
+                            <span className={styles.username}>
+                                {post?.user?.name}
+                            </span>
+                            <span className={styles.date}>
+                                {post?.createdAt}
+                            </span>
                         </div>
                     </div>
                 </div>

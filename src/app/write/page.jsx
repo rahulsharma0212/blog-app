@@ -3,7 +3,7 @@
 import Image from 'next/image';
 import styles from './writePage.module.css';
 import { useEffect, useState } from 'react';
-import ReactQuill from 'react-quill';
+/* import ReactQuill from 'react-quill'; */
 import 'react-quill/dist/quill.bubble.css';
 import { useRouter } from 'next/navigation';
 import { useSession } from 'next-auth/react';
@@ -14,10 +14,12 @@ import {
     getDownloadURL,
 } from 'firebase/storage';
 import { app } from '@/utils/firebase';
+import dynamic from 'next/dynamic';
 
 const WritePage = () => {
     const { status } = useSession();
     const router = useRouter();
+    const ReactQuill = dynamic(() => import('react-quill'), { ssr: false });
 
     const [isOpen, setIsOpen] = useState(false);
     const [file, setFile] = useState(null);
@@ -104,7 +106,6 @@ const WritePage = () => {
 
         if (res.status === 200) {
             const data = await res.json();
-            console.log('🚀 ~ file: page.jsx:107 ~ handleSubmit ~ data:', data);
             router.push(`/posts/${data.slug}`);
         }
     };
