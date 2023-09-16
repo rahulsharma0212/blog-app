@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import styles from './menu.module.css';
 import Image from 'next/image';
-import MenuPost from '../menuPost/menuPost';
+import MenuPost from '../menuPost/MenuPost';
 import MenuCategories from '../menuCategories/MenuCategories';
 
 const Menu = () => {
